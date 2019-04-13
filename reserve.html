@@ -1,0 +1,55 @@
+<script>
+    function newReservation(event) {
+
+        // prevent submit action
+        event.preventDefault();
+
+        // get user input
+        var custName = $("#customer-name").val().trim();
+        var custPhone = $("#customer-phone").val().trim();
+        var custEmail = $("#customer-email").val().trim();
+        var custId = $("#customer-id").val().trim();
+
+        // create object record to push to firebase
+        var newRes = {
+            name: custName,
+            phone: custPhone,
+            email: custEmail,
+            id: custId
+        };
+        console.log(newRes);
+
+        // grab current browser URL
+        var currentURL = window.location.origin;
+
+        // send data to server to store info
+        $.post(currentURL + "/api/tables", newReservation,
+            function (data) {
+
+                // If a table is available... tell user they are booked.
+                if (data == true) {
+                    alert("You've been booked")
+                }
+
+                // If a table is available... tell user they on the waiting list.
+                if (data == false) {
+                    alert("You are on the wait list")
+                }
+
+                // clear form
+                $("#customer-name").val("");
+                $("#customer-phone").val("");
+                $("#customer-email").val("");
+                $("#customer-id").val("");
+            });
+    }
+
+    // ==================================
+    // LISTENERS
+    // ==================================
+
+    // new reservation button
+    $(".submit").on("click", newReservation);
+
+
+</script>
