@@ -29,14 +29,16 @@ app.get("/tables", function(req, res){
 
 // posting reservation 
 
-app.post("api/reservations", function(req, res){
+app.post("/api/reservations", function(req, res){
 
     var newRes = req.body; 
 
-    newRes.routeName = newRes.name.replace(/\s+/g, "").toLowerCase();
+    // newRes.routeName = newRes.name.replace(/\s+/g, "").toLowerCase();
     
     console.log(newRes);
     tablesArray.push(newRes);
+    console.log(tablesArray);
+    
     res.json(newRes);
 
 });
