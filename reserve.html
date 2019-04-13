@@ -112,21 +112,22 @@
                 id: custId
             };
             console.log(newRes);
+            
 
             // grab current browser URL
             var currentURL = window.location.origin;
 
             // send data to server to store info
-            $.post(currentURL + "/api/reservations", newReservation,
+            $.post(currentURL + "/api/reservations", newRes,
                 function(data) {
 
                     // If a table is available... tell user they are booked.
-                    if (data == true) {
+                    if (data) {
                         alert("You've been booked")
                     }
 
                     // If a table is available... tell user they on the waiting list.
-                    if (data == false) {
+                    if (!data) {
                         alert("You are on the wait list")
                     }
 
