@@ -5,11 +5,3 @@ body {
 .container {
     background-color: none;
 }
-
-#header {
-    background: url(chickenWaffles.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: antiquewhite;
-    text-shadow: 2px 2px 8px red;
-}
