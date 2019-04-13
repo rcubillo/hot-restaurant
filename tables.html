@@ -9,15 +9,20 @@
     <!-- Css style -->
     <!-- <link rel="stylesheet" type="text/css" href="css/stylesheet.css"> -->
     <!--The Bootstrapary-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--The Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Arvo:700" rel="stylesheet">
     <!-- Font Awesomness -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <!--Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <!-- my JavaScript <script type="text/javascript" src="myjs.js"></script> -->
 
 
@@ -31,7 +36,7 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
-        
+
         #header {
             background: url(https://i.ytimg.com/vi/4p0EJsYQTy8/maxresdefault.jpg);
             background-repeat: no-repeat;
@@ -39,7 +44,7 @@
             color: antiquewhite;
             text-shadow: 2px 2px 8px red;
         }
-        
+
         .card-footer {
             background-color: black;
         }
@@ -57,7 +62,8 @@
 
         <div class="card-body" id="header">
             <br>
-            <h1 class="card-title"><i class="fas fa-pepper-hot"></i> NEW NOW NEAR NASHVEGAS HOT EATERY <i class="fas fa-utensils"></i></h5>
+            <h1 class="card-title"><i class="fas fa-pepper-hot"></i> NEW NOW NEAR NASHVEGAS HOT EATERY <i
+                    class="fas fa-utensils"></i></h5>
                 <br>
                 <h4 class="card-text">Make Your Reservation</h4>
                 <br>
@@ -94,15 +100,17 @@
 
     <script>
         function getTables() {
-            $.get("/api/tables", function(data) {
+            $.get("/api/tables", function (data) {
                 for (var i = 0; i < data.length; i++) {
                     console.log(data[i]);
                     var tablesItem = $("<li class='list-group-item'>");
+                        var spot = i+1;
 
-                    tablesItem.append($("<h2>").text("Name: " + data[i].name));
-                    tablesItem.append($("<h3>").text("Phone: " + data[i].phone));
-                    tablesItem.append($("<h3>").text("Email: " + data[i].email));
-                    tablesItem.append($("<h3>").text("ID: " + data[i].id));
+                    tablesItem.append($("<p>").text("Table No. " + spot));
+                    tablesItem.append($("<p>").text("Name: " + data[i].name));
+                    tablesItem.append($("<p>").text("Phone: " + data[i].phone));
+                    tablesItem.append($("<p>").text("Email: " + data[i].email));
+                    tablesItem.append($("<p>").text("ID: " + data[i].id));
 
                     $("#reservations").append(tablesItem);
                 }
@@ -110,15 +118,18 @@
         }
 
         function getWaitlist() {
-            $.get("/api/waitlist", function(data) {
+            $.get("/api/waitlist", function (data) {
                 for (var i = 0; i < data.length; i++) {
                     console.log(data[i]);
+                    var spot = i+1;
+
                     var tablesItem = $("<li class='list-group-item'>");
 
-                    tablesItem.append($("<h2>").text("Name: " + data[i].name));
-                    tablesItem.append($("<h3>").text("Phone: " + data[i].phone));
-                    tablesItem.append($("<h3>").text("Email: " + data[i].email));
-                    tablesItem.append($("<h3>").text("ID: " + data[i].id));
+                    tablesItem.append($("<p>").text("Waitlist position: " +spot));
+                    tablesItem.append($("<p>").text("Name: " + data[i].name));
+                    tablesItem.append($("<p>").text("Phone: " + data[i].phone));
+                    tablesItem.append($("<p>").text("Email: " + data[i].email));
+                    tablesItem.append($("<p>").text("ID: " + data[i].id));
 
                     $("#waitlist").append(tablesItem);
                 }

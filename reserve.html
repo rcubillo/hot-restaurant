@@ -9,15 +9,20 @@
     <!-- Css style -->
     <!-- <link rel="stylesheet" type="text/css" href="css/stylesheet.css"> -->
     <!--The Bootstrapary-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--The Google Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Arvo:700" rel="stylesheet">
     <!-- Font Awesomness -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <!--Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
     <!-- my JavaScript <script type="text/javascript" src="myjs.js"></script> -->
     <title>RESERVATION</title>
 
@@ -28,7 +33,7 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
-        
+
         #header {
             background: url(https://i.ytimg.com/vi/4p0EJsYQTy8/maxresdefault.jpg);
             background-repeat: no-repeat;
@@ -36,7 +41,7 @@
             color: antiquewhite;
             text-shadow: 2px 2px 8px red;
         }
-        
+
         .card-footer {
             background-color: black;
         }
@@ -51,7 +56,8 @@
             Would you like to make a reservation?
         </div>
         <div class="card-body" id="header">
-            <h1 class="card-title"><i class="fas fa-pepper-hot"></i> NEW NOW NEAR NASHVEGAS HOT EATERY <i class="fas fa-utensils"></i></h5>
+            <h1 class="card-title"><i class="fas fa-pepper-hot"></i> NEW NOW NEAR NASHVEGAS HOT EATERY <i
+                    class="fas fa-utensils"></i></h5>
                 <p class="card-text">Make Your Reservation</p>
                 <a href="/tables" class="btn btn-success">View Tables <i class="fas fa-door-open"></i></a>
 
@@ -120,25 +126,31 @@
             var currentURL = window.location.origin;
 
             // send data to server to store info
-            $.post(currentURL + "/api/reservations", newRes,
-                function(data) {
+            $.post(currentURL + "/api/reservations", newRes)
 
-                    // If a table is available... tell user they are booked.
-                    if (data) {
-                        alert("You've been booked")
-                    }
 
-                    // If a table is available... tell user they on the waiting list.
-                    if (!data) {
-                        alert("You are on the wait list")
-                    }
+            .then(function (data) {
+                console.log("In callback");
 
-                    // clear form
-                    $("#customer-name").val("");
-                    $("#customer-phone").val("");
-                    $("#customer-email").val("");
-                    $("#customer-id").val("");
-                });
+                console.log(data);
+
+                // If a table is available... tell user they are booked.
+                if (data) {
+                    alert("You've been booked")
+                }
+
+                // If a table is available... tell user they on the waiting list.
+                if (!data) {
+                    alert("You are on the wait list")
+                }
+
+                // clear form
+                $("#customer-name").val("");
+                $("#customer-phone").val("");
+                $("#customer-email").val("");
+                $("#customer-id").val("");
+            });
+
         }
 
         // ==================================
