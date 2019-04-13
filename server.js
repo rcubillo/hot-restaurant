@@ -23,8 +23,8 @@ app.get("/reserve", function(req, res){
 });
 
 app.get("/tables", function(req, res){
-    res.sendFile(path.join(__dirname, "tables.html"));
-    //return res.json(reservations);
+    //res.sendFile(path.join(__dirname, "tables.html"));
+    return res.json(tablesArray);
 })
 
 // posting reservation 
