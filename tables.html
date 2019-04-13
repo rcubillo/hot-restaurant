@@ -39,6 +39,10 @@
             color: antiquewhite;
             text-shadow: 2px 2px 8px red;
         }
+        
+        .card-footer {
+            background-color: black;
+        }
     </style>
 
 
@@ -61,8 +65,8 @@
                 <a href="/index" class="btn btn-secondary">Home<i class="fas fa-house-damage"></i></a>
                 <br>
         </div>
-        <div class="card-footer text-muted">
-            updated every 15 minutes.. (cause we'll probably be closed by then?!)
+        <div class="card-footer">
+            <a href="#">API Table Link</a> | <a href="#">API Wait List</a>
         </div>
     </div>
     <br><br><br>
@@ -86,11 +90,7 @@
             </div>
         </div>
     </div>
-    <footer class="footer">
-        <div class="container">
-            <p><a href="#">API Table Link</a> | <a href="#">API Wait List</a>
-        </div>
-    </footer>
+
 
     <script>
         function getTables() {
