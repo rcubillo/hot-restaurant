@@ -1,4 +1,4 @@
-var tables = require("./data/tables.js")
+var tablesArray = require("./data/tables.js")
 
 var express= require("express");
 var path = require("path");
@@ -36,7 +36,7 @@ app.post("api/reservations", function(req, res){
     newRes.routeName = newRes.name.replace(/\s+/g, "").toLowerCase();
     
     console.log(newRes);
-    tables.push(newRes);
+    tablesArray.push(newRes);
     res.json(newRes);
 
 });
