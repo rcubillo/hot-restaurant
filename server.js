@@ -1,4 +1,5 @@
 var tablesArray = require("./data/tables.js")
+var waitlistArray = require("./data/waitlist.js")
 
 var express= require("express");
 var path = require("path");
@@ -23,8 +24,15 @@ app.get("/reserve", function(req, res){
 });
 
 app.get("/tables", function(req, res){
-    //res.sendFile(path.join(__dirname, "tables.html"));
-    return res.json(tablesArray);
+    res.sendFile(path.join(__dirname, "tables.html"));
+})
+
+app.get("/api/tables", function(req, res){
+    res.json(tablesArray);
+})
+
+app.get("/api/waitlist", function(req, res){
+    res.json(waitlistArray);
 })
 
 // posting reservation 
@@ -33,13 +41,17 @@ app.post("/api/reservations", function(req, res){
 
     var newRes = req.body; 
 
-    // newRes.routeName = newRes.name.replace(/\s+/g, "").toLowerCase();
-    
-    console.log(newRes);
-    tablesArray.push(newRes);
-    console.log(tablesArray);
-    
-    res.json(newRes);
+    if (tablesArray.length < 5) {
+        // console.log("Adding", newRes, "to tablesArray.");
+        tablesArray.push(newRes);
+        // console.log(tablesArray);
+        res.json(true);
+    } else {
+        // console.log("Adding", newRes, "to waitlistArray.");
+        waitlistArray.push(newRes);
+        // console.log(waitlistArray);
+        res.json(false);
+    };
 
 });
 app.listen(port, function() {
